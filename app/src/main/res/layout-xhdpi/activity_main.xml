@@ -42,27 +42,27 @@
             -->
 
         <Button
-            android:id="@+id/login"
+            android:id="@+id/online_mode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/btn_login_online"
-            android:paddingEnd="43dp"
-            android:paddingStart="43dp"
-            android:text="@string/online"
+            android:paddingEnd="40dp"
+            android:paddingStart="40dp"
+            android:text="@string/online_mode"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/offline"
+            android:id="@+id/offline_mode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:background="@drawable/btn_login_offline"
-            android:paddingEnd="35dp"
-            android:paddingStart="35dp"
-            android:text="@string/offline"
+            android:paddingEnd="33dp"
+            android:paddingStart="33dp"
+            android:text="@string/offline_mode"
             android:textColor="#FFFFFF"
             android:textSize="15sp" />
     </LinearLayout>
@@ -83,7 +83,7 @@
             android:textSize="13sp" />
 
         <Button
-            android:id="@+id/imei_login"
+            android:id="@+id/btn_faq"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"

@@ -5,8 +5,8 @@
     <string name="talkback_login">Login</string>
     <string name="talkback_offline">Offline Mode</string>
 
-    <string name="online">帐号登陆</string>
-    <string name="offline">游客登录</string>
+    <string name="online_mode">帐号登陆</string>
+    <string name="offline_mode">游客登录</string>
 
     <string name="user_faq1">点击登录即表示您已经同意</string>
     <string name="user_faq2">《用户协议》</string>

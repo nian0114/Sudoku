@@ -15,6 +15,8 @@
 
     <!--登录界面背景颜色-->
     <color name="login_background">#6C5B81</color>
+    <color name="login_recommend">#F2727F</color>
+    <color name="login_norecommend">#C06D87</color>
 
     <!--colorAphla为RGBA(255,255,255,0),使用16进制数表示透明,后用@android:color/transparent替代-->
     <color name="colorAphla">#00000000</color>

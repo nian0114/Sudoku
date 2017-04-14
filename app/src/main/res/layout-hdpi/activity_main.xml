@@ -21,7 +21,7 @@
         android:layout_alignParentBottom="true"
         android:orientation="vertical">
 
-        <!--使用contentDescription来使TalkBack可以顺利朗读屏幕内容-->
+        <!--使用contentDescription来使TalkBack可以顺利朗读屏幕内容
         <ImageButton
             android:id="@+id/login"
             android:layout_width="match_parent"
@@ -39,6 +39,32 @@
             android:contentDescription="@string/talkback_offline"
             android:scaleType="centerInside"
             android:src="@drawable/ani_btn_cancel" />
+            -->
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/radius_recommend"
+            android:paddingEnd="40dp"
+            android:paddingStart="40dp"
+            android:text="@string/online"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/offline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/radius_offline"
+            android:paddingEnd="33dp"
+            android:paddingStart="33dp"
+            android:text="@string/offline"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
     </LinearLayout>
 
     <RelativeLayout

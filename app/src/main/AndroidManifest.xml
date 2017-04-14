@@ -19,7 +19,7 @@
         </activity>
 
         <activity
-            android:name=".activities.FaqActivity"
+            android:name=".activities.LicenseActivity"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

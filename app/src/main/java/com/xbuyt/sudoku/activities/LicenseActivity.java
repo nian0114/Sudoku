@@ -18,7 +18,7 @@ import java.io.InputStreamReader;
  * Created by Nian on 17/4/14.
  */
 
-public class FaqActivity extends AppCompatActivity {
+public class LicenseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

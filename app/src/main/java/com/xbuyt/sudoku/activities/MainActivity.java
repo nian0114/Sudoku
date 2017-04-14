@@ -44,7 +44,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent mainIntent = new Intent().setClass(
-                        MainActivity.this, FaqActivity.class);
+                        MainActivity.this, LicenseActivity.class);
                 startActivity(mainIntent);
             }
         });

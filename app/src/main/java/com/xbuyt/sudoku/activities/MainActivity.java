@@ -67,7 +67,6 @@ public class MainActivity extends Activity {
                                                                    public void onResponse(String response) {
                                                                        try {
                                                                            JSONObject jsonObject = new JSONObject(response);
-                                                                           Log.d("TAG", jsonObject.toString());
                                                                            if (jsonObject.names().get(0).equals("success")) {
                                                                                Toast.makeText(getApplicationContext(), getString(R.string.dialog_loginSucceed), Toast.LENGTH_SHORT).show();
                                                                            } else if (jsonObject.names().get(0).equals("wrong")) {
@@ -76,13 +75,11 @@ public class MainActivity extends Activity {
                                                                                Toast.makeText(getApplicationContext(), getString(R.string.dialog_loginNonExsist), Toast.LENGTH_SHORT).show();
                                                                            }
                                                                        } catch (JSONException e) {
-                                                                           e.printStackTrace();
                                                                        }
                                                                    }
                                                                }, new Response.ErrorListener() {
                                                                    @Override
                                                                    public void onErrorResponse(VolleyError error) {
-                                                                       error.printStackTrace();
                                                                        Toast.makeText(getApplicationContext(), getString(R.string.dialog_loginFailed), Toast.LENGTH_SHORT).show();
                                                                    }
                                                                }) {

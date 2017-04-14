@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Sudoku</string>
+
+    <!--Login Activity-->
+    <string name="talkback_login">Login</string>
+    <string name="talkback_offline">Offline Mode</string>
+
+    <string name="user_faq1">点击登录即表示您已经同意</string>
+    <string name="user_faq2">《用户协议》</string>
 </resources>

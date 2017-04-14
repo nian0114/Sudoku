@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!--
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+-->
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <!--<color name="colorAccent">#FF4081</color>-->
+    <color name="colorAccent">#33B4FF</color>
+    <color name="colorAccent_disable">#999999</color>
+
+
+    <!--登录界面背景颜色-->
+    <color name="login_background">#6C5B81</color>
+
+    <!--colorAphla为RGBA(255,255,255,0),使用16进制数表示透明,后用@android:color/transparent替代-->
+    <color name="colorAphla">#00000000</color>
 </resources>

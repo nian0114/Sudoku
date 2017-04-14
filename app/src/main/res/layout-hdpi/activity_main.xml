@@ -11,7 +11,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="200dp"
         android:src="@drawable/splash_logo" />
 
     <LinearLayout
@@ -53,6 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:text="@string/user_faq1"
+            android:textColor="#FFFFFF"
             android:textSize="13sp" />
 
         <Button

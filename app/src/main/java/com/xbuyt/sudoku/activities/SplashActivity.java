@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.xbuyt.sudoku.MainActivity;
 import com.xbuyt.sudoku.R;
 
 import java.util.Timer;

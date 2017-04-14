@@ -10,4 +10,7 @@
 
     <string name="user_faq1">点击登录即表示您已经同意</string>
     <string name="user_faq2">《用户协议》</string>
+
+    <string name="user_license">用户许可协议</string>
+    <string name="settings_license_activity_unavailable">暂无用户许可协议</string>
 </resources>

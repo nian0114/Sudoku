@@ -1,6 +1,7 @@
 package com.xbuyt.sudoku.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -42,7 +43,9 @@ public class MainActivity extends Activity {
         mFAQ.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("Sudoku", "mFaq");
+                Intent mainIntent = new Intent().setClass(
+                        MainActivity.this, FaqActivity.class);
+                startActivity(mainIntent);
             }
         });
     }

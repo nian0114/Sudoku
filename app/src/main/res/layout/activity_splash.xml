@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.xbuyt.sudoku.activities.SplashActivity">
 
+    <!--使用scaleType="centerCrop"代表适配奇葩分辨率-->
     <ImageView
         android:id="@+id/activity_splash_image"
         android:layout_width="wrap_content"

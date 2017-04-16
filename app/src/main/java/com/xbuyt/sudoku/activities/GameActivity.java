@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,6 +33,10 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board_game);
+
+        //Android已经逐渐废弃ActionBar改用ToolBar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         textLevel = (TextView) findViewById(R.id.activity_board_game_level_text);
         penPencilButton = (Button) findViewById(R.id.activity_board_game_pen_pencil_button);
@@ -97,4 +102,5 @@ public class GameActivity extends AppCompatActivity {
     public static void setTextLevel(String text) {
         textLevel.setText(text);
     }
+
 }

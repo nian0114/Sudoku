@@ -1,9 +1,11 @@
 package com.xbuyt.sudoku.activities;
 
 import android.content.ActivityNotFoundException;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.WindowManager;
 import android.webkit.WebView;
 import android.widget.Toast;
 
@@ -27,10 +29,11 @@ public class LicenseActivity extends AppCompatActivity {
 
         setTitle(R.string.user_license);
 
-        //支持Android5.0以下的机型
+        //Android已经逐渐废弃ActionBar改用ToolBar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        initState();
 
         try {
             WebView view = (WebView) findViewById(R.id.about_webview);
@@ -68,4 +71,15 @@ public class LicenseActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 沉浸式状态栏
+     */
+    private void initState() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            //透明状态栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            //透明导航栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
+    }
 }

@@ -323,21 +323,21 @@ public class BoardGameFragment extends Fragment {
     }
 
     private static void clearBoardGame(CellFragment[][] arrayCellFragment) {
-        for (int r = 0; r < arrayCellFragment.length; r++) {
-            for (int c = 0; c < arrayCellFragment.length; c++) {
-                arrayCellFragment[r][c].setMainNumber("");//设置该快为空
-                arrayCellFragment[r][c].setBackgroundColor(R.drawable.corner_radius_unpainted_cell);//设置为待填入的颜色
-                arrayCellFragment[r][c].resetPencilCell();//重置草稿、答题模式
-                arrayCellFragment[r][c].setBooleanPaintedCell(false);//设置绘制区域为false(即未完成)
+        for (CellFragment[] arr : arrayCellFragment) {
+            for (CellFragment arr2 : arr) {
+                arr2.setMainNumber("");//设置该快为空
+                arr2.setBackgroundColor(R.drawable.corner_radius_unpainted_cell);//设置为待填入的颜色
+                arr2.resetPencilCell();//重置草稿、答题模式
+                arr2.setBooleanPaintedCell(false);//设置绘制区域为false(即未完成)
             }
         }
     }
 
     public static boolean completedBoardGame(CellFragment[][] arrayCellFragment) {
         boolean completedBoardGame = true;
-        for (int r = 0; r < arrayCellFragment.length; r++) {
-            for (int c = 0; c < arrayCellFragment.length; c++) {
-                if (!arrayCellFragment[r][c].isBooleanPaintedCell()) {
+        for (CellFragment[] arr : arrayCellFragment) {
+            for (CellFragment arr2 : arr) {
+                if (!arr2.isBooleanPaintedCell()) {
                     completedBoardGame = false;//只要颜色不是都true，就没完成这局游戏
                 }
             }

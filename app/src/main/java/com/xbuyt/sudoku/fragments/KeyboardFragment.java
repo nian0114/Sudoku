@@ -57,8 +57,8 @@ public class KeyboardFragment extends Fragment {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    currentNumber = button.getText().toString();
-                    setBackgroundColor();
+                    currentNumber = button.getText().toString();//获取当前选择的数字
+                    setBackgroundColor();//设置当前选择的数字背景和别的不一样
                 }
             });
         }
@@ -67,8 +67,8 @@ public class KeyboardFragment extends Fragment {
     }
 
     public void setBackgroundColor() {
-        for (Button button : arrayButton) {
-            if (currentNumber.equals(button.getText().toString())) {
+        for (Button button : arrayButton) {//for的新式写法，遍历arrayButton[i];等价于for(int i=1,i<arrayButton.length;i++)，下同
+            if (currentNumber.equals(button.getText().toString())) {//如果和选中的那个数字一致
                 button.setBackgroundResource(R.drawable.corner_radius_selected_keyboard_button);
             } else {
                 button.setBackgroundResource(R.drawable.corner_radius_unselected_keyboard_button);
@@ -77,7 +77,7 @@ public class KeyboardFragment extends Fragment {
     }
 
     public static void resetKeyboard() {
-        currentNumber = "";
+        currentNumber = "";//当前选择的数字为空
         for (Button button : arrayButton) {
             button.setBackgroundResource(R.drawable.corner_radius_unselected_keyboard_button);
         }

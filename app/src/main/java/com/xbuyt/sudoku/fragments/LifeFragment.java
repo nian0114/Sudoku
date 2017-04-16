@@ -45,7 +45,7 @@ public class LifeFragment extends Fragment {
 
     public static void restartIcons(Context context) {
         for (ImageView icon : arrayIcon) {
-            Animations.animationHeartFull(context, icon);
+            Animations.animationHeartFull(context, icon);//来个全满爱心的动画
         }
     }
 }

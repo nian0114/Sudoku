@@ -11,9 +11,9 @@ import com.xbuyt.sudoku.R;
 public class Animations {
 
     public static void animationHeartFull(Context context, ImageView image) {
-        Animation animation = AnimationUtils.loadAnimation(context, R.anim.animation_heart_full);
-        animation.setFillAfter(true);
-        image.startAnimation(animation);
+        Animation animation = AnimationUtils.loadAnimation(context, R.anim.animation_heart_full);//载入命全满的动画
+        animation.setFillAfter(true);//在移动动画结束后即淡出，不会回到原来的位置在淡出
+        image.startAnimation(animation);//开始了动画
     }
 
     public static void animationHeartEmpty(Context context, ImageView image) {

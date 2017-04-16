@@ -16,11 +16,6 @@ import com.xbuyt.sudoku.util.Animations;
 import com.xbuyt.sudoku.util.Constants;
 
 public class CellFragment extends Fragment {
-
-
-    public CellFragment() {
-    }
-
     TextView pencil1;
     TextView pencil2;
     TextView pencil3;
@@ -70,11 +65,11 @@ public class CellFragment extends Fragment {
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!KeyboardFragment.currentNumber.equals("") && !booleanPaintedCell) {
+                if (!KeyboardFragment.currentNumber.equals("") && !booleanPaintedCell) {//判断当前是否为可填入区域，如果为空且判断为未知(即不是默认给出的数)就可以进行下面的操作(即草稿/答题模式)
                     if (GameActivity.penPencilOption == Constants.PEN_MODE) {
-                        penMove(sudoku, view.getContext(), r, c);
+                        penMove(sudoku, view.getContext(), r, c);//填入数字，正确继续，错误给出提示，命-1
                     } else if (GameActivity.penPencilOption == Constants.PENCIL_MODE) {
-                        pencilMove();
+                        pencilMove();//填入小数字，备用
                     }
                 }
             }
@@ -82,35 +77,35 @@ public class CellFragment extends Fragment {
     }
 
     private void penMove(Sudoku sudoku, Context context, int r, int c) {
-        setBooleanPaintedCell(true);
-        resetPencilCell();
+        setBooleanPaintedCell(true);//设置这块为已填入区域
+        resetPencilCell();//如果先前存在草稿模式的数据，则设置为不可见
         if (BoardGameFragment.completedBoardGame(BoardGameFragment.getArrayCell())) {
-            sudoku.winGame(context);
+            sudoku.winGame(context);//如果全部被填满，且都是已绘区域就标记为赢得了比赛
         }
-        if (KeyboardFragment.currentNumber.equals(Sudoku.getBoardGame()[r][c])) {
-            Animations.annimationCorrectCell(context, layout);
-            mainNumber.setText(KeyboardFragment.currentNumber);
-            setBackgroundColor(R.drawable.corner_radius_correct_cell);
+        if (KeyboardFragment.currentNumber.equals(Sudoku.getBoardGame()[r][c])) {//如果填入的和要求的相同
+            Animations.annimationCorrectCell(context, layout);//来个动画，表示正确
+            mainNumber.setText(KeyboardFragment.currentNumber);//设置那个地方为填入的数字
+            setBackgroundColor(R.drawable.corner_radius_correct_cell);//设置背景颜色为和已知区域一样的颜色
         } else {
-            Animations.animationIncorrectCell(context, layout);
-            Animations.animationHeartEmpty(context, LifeFragment.arrayIcon[sudoku.getLifeCounter()]);
-            mainNumber.setText(Sudoku.getBoardGame()[r][c]);
-            setBackgroundColor(R.drawable.corner_radius_incorrect_cell);
+            Animations.animationIncorrectCell(context, layout);//来个动画，表示错误
+            Animations.animationHeartEmpty(context, LifeFragment.arrayIcon[sudoku.getLifeCounter()]);//来个动画，表示命-1
+            mainNumber.setText(Sudoku.getBoardGame()[r][c]);//设置那个位置为正确答案，未来考虑可能删除这个
+            setBackgroundColor(R.drawable.corner_radius_incorrect_cell);//设置颜色为表示错误的颜色
             if (sudoku.getLifeCounter() == 0) {
-                sudoku.loseGame(context);
+                sudoku.loseGame(context);//判断是否有命可以继续玩下去，没命了就提示失败
             } else {
-                sudoku.setLifeCounter(sudoku.getLifeCounter() - 1);
+                sudoku.setLifeCounter(sudoku.getLifeCounter() - 1);//还有命就继续玩，但是命-1
             }
         }
     }
 
     private void pencilMove() {
         for (int i = 0; i < arrayPencil.length; i++) {
-            if (KeyboardFragment.currentNumber.equals(Integer.toString(i + 1))) {
-                if (arrayPencil[i].getVisibility() == View.VISIBLE) {
-                    arrayPencil[i].setVisibility(View.INVISIBLE);
-                } else if (arrayPencil[i].getVisibility() == View.INVISIBLE) {
-                    arrayPencil[i].setVisibility(View.VISIBLE);
+            if (KeyboardFragment.currentNumber.equals(Integer.toString(i + 1))) {//获取用户当前选择的数
+                if (arrayPencil[i].getVisibility() == View.VISIBLE) {//如果现在已经显示了这个数
+                    arrayPencil[i].setVisibility(View.INVISIBLE);//让这个数消失
+                } else if (arrayPencil[i].getVisibility() == View.INVISIBLE) {//如果现在还没显示这个数
+                    arrayPencil[i].setVisibility(View.VISIBLE);//那么让这个数显示出来
                 }
             }
         }
@@ -118,7 +113,7 @@ public class CellFragment extends Fragment {
 
     public void resetPencilCell() {
         for (TextView pencil : arrayPencil) {
-            pencil.setVisibility(View.INVISIBLE);
+            pencil.setVisibility(View.INVISIBLE);//设置单元格的9个数不可见
         }
     }
 

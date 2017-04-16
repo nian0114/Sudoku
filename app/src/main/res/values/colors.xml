@@ -14,6 +14,11 @@
     <color name="colorSudoku">#C06D87</color>
     <color name="colorSudokuLight">#F2727F</color>
 
+    <color name="correct_cell">#E1708C</color>
+    <color name="incorrect_cell">#C24D59</color>
+
+    <color name="text_color">#EEEEEE</color>
+
     <!--登录界面背景颜色-->
     <color name="login_background">#6C5B81</color>
 

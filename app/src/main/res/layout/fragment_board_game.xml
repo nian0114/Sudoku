@@ -1,0 +1,661 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.xbuyt.sudoku.fragments.BoardGameFragment">
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="9">
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_1_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_1_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_1_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_1_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_1_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_1_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_1_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_1_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_1_9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_2_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_2_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_2_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_2_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_2_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_2_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_2_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_2_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_2_9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_3_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_3_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_3_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_3_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_3_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_3_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_3_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_3_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_3_9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_4_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_4_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_4_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_4_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_4_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_4_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_4_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_4_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_4_9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_5_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_5_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_5_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_5_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_5_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_5_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_5_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_5_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_5_9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_6_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_6_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_6_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_6_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_6_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_6_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_6_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_6_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_6_9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_7_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_7_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_7_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_7_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_7_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_7_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_7_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_7_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_7_9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_8_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_8_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_8_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_8_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_8_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_8_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_8_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_8_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_8_9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_9_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_9_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_9_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_9_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_9_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_9_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_9_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_9_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+        <fragment
+            android:id="@+id/activity_board_game_cell_9_9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cell_margin"
+            android:name="com.xbuyt.sudoku.fragments.CellFragment"
+            tools:layout="@layout/fragment_cell" />
+
+    </GridLayout>
+</FrameLayout>

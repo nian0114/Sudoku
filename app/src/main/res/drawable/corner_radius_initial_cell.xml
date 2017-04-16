@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/colorSudokuLight" />
+
+    <padding
+        android:left="1dp"
+        android:top="1dp"
+        android:right="1dp"
+        android:bottom="1dp" />
+
+    <corners
+        android:bottomRightRadius="@dimen/corner_radius_cell"
+        android:bottomLeftRadius="@dimen/corner_radius_cell"
+        android:topLeftRadius="@dimen/corner_radius_cell"
+        android:topRightRadius="@dimen/corner_radius_cell" />
+</shape>

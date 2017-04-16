@@ -24,6 +24,14 @@
         <activity
             android:name=".activities.LicenseActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".activities.SwitchActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".activities.GameActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

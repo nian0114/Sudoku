@@ -22,4 +22,26 @@
     <!--License Activity-->
     <string name="user_license">用户许可协议</string>
     <string name="settings_license_activity_unavailable">暂无用户许可协议</string>
+
+    <string name="fragment_keyboard_button_9">9</string>
+    <string name="fragment_keyboard_button_8">8</string>
+    <string name="fragment_keyboard_button_7">7</string>
+    <string name="fragment_keyboard_button_6">6</string>
+    <string name="fragment_keyboard_button_5">5</string>
+    <string name="fragment_keyboard_button_4">4</string>
+    <string name="fragment_keyboard_button_3">3</string>
+    <string name="fragment_keyboard_button_2">2</string>
+    <string name="fragment_keyboard_button_1">1</string>
+    <string name="activity_board_game_text_level_string">等级:</string>
+    <string name="fragment_cell_pencil_1">1</string>
+    <string name="fragment_cell_pencil_2">2</string>
+    <string name="fragment_cell_pencil_3">3</string>
+    <string name="fragment_cell_pencil_4">4</string>
+    <string name="fragment_cell_pencil_5">5</string>
+    <string name="fragment_cell_pencil_6">6</string>
+    <string name="fragment_cell_pencil_7">7</string>
+    <string name="fragment_cell_pencil_8">8</string>
+    <string name="fragment_cell_pencil_9">9</string>
+    <string name="activity_board_game_pencil_text">草稿</string>
+    <string name="activity_board_game_pen_text">答题</string>
 </resources>

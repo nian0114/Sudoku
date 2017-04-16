@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context="com.xbuyt.sudoku.fragments.LifeFragment">
+
+    <ImageView
+        android:id="@+id/fragment_life_icon_1"
+        android:layout_width="@dimen/heart_icon_size"
+        android:layout_height="@dimen/heart_icon_size"
+        android:src="@drawable/heart_icon_full"
+        android:layout_margin="@dimen/heart_icon_margin" />
+
+    <ImageView
+        android:id="@+id/fragment_life_icon_2"
+        android:layout_width="@dimen/heart_icon_size"
+        android:layout_height="@dimen/heart_icon_size"
+        android:src="@drawable/heart_icon_full"
+        android:layout_margin="@dimen/heart_icon_margin" />
+
+    <ImageView
+        android:id="@+id/fragment_life_icon_3"
+        android:layout_width="@dimen/heart_icon_size"
+        android:layout_height="@dimen/heart_icon_size"
+        android:src="@drawable/heart_icon_full"
+        android:layout_margin="@dimen/heart_icon_margin" />
+
+    <ImageView
+        android:id="@+id/fragment_life_icon_4"
+        android:layout_width="@dimen/heart_icon_size"
+        android:layout_height="@dimen/heart_icon_size"
+        android:src="@drawable/heart_icon_full"
+        android:layout_margin="@dimen/heart_icon_margin" />
+
+    <ImageView
+        android:id="@+id/fragment_life_icon_5"
+        android:layout_width="@dimen/heart_icon_size"
+        android:layout_height="@dimen/heart_icon_size"
+        android:src="@drawable/heart_icon_full"
+        android:layout_margin="@dimen/heart_icon_margin" />
+
+</LinearLayout>

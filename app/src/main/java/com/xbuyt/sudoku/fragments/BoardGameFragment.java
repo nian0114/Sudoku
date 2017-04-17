@@ -310,10 +310,11 @@ public class BoardGameFragment extends Fragment {
 
     }
 
-    private static void printRandomNumberInBoardGame(CellFragment[][] arrayCellFragment, String[][] boardGame) {
+    private static void printRandomNumberInBoardGame(CellFragment[][] arrayCellFragment, String[][] boardGame) {//随机显示34-42个空格
         Random rndRow = new Random();
         Random rndColumn = new Random();
-        for (int i = 0; i < 40; i++) {
+        Random rndCellNumber = new Random();
+        for (int i = 0; i < rndCellNumber.nextInt(8) + 35; i++) {
             int r = rndRow.nextInt(9);//生成随机数
             int c = rndColumn.nextInt(9);
             arrayCellFragment[r][c].setMainNumber(boardGame[r][c]);//从Suduko类的boardGame中的同位置获取数据到指定坐标

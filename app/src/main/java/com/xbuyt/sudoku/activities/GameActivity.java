@@ -42,9 +42,7 @@ public class GameActivity extends AppCompatActivity {
         penPencilButton = (Button) findViewById(R.id.activity_board_game_pen_pencil_button);
         chronometer = (Chronometer) findViewById(R.id.activity_board_game___chronometer);
 
-
         context = getApplicationContext();
-
 
         penPencilButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +56,7 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         });
-        sudoku.resetGame(context, Constants.MEDIUM_LEVEL_CELL_NUMBER, Constants.MEDIUM_LEVEL_TEXT);
+        sudoku.resetGame(context, Constants.EASY_LEVEL_CELL_NUMBER, Constants.MEDIUM_LEVEL_TEXT);
     }
 
     @Override

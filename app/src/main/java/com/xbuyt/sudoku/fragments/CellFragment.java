@@ -88,13 +88,13 @@ public class CellFragment extends Fragment {
             setBackgroundColor(R.drawable.corner_radius_correct_cell);//设置背景颜色为和已知区域一样的颜色
         } else {
             Animations.animationIncorrectCell(context, layout);//来个动画，表示错误
-            Animations.animationHeartEmpty(context, LifeFragment.arrayIcon[sudoku.getLifeCounter()]);//来个动画，表示命-1
+            Animations.animationHeartEmpty(context, LifeFragment.arrayIcon[Sudoku.lifeCounter]);//来个动画，表示命-1
             mainNumber.setText(Sudoku.getBoardGame()[r][c]);//设置那个位置为正确答案，未来考虑可能删除这个
             setBackgroundColor(R.drawable.corner_radius_incorrect_cell);//设置颜色为表示错误的颜色
-            if (sudoku.getLifeCounter() == 0) {
+            if (Sudoku.lifeCounter == 0) {
                 sudoku.loseGame(context);//判断是否有命可以继续玩下去，没命了就提示失败
             } else {
-                sudoku.setLifeCounter(sudoku.getLifeCounter() - 1);//还有命就继续玩，但是命-1
+                Sudoku.lifeCounter = Sudoku.lifeCounter - 1;//还有命就继续玩，但是命-1
             }
         }
     }

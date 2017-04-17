@@ -15,7 +15,7 @@ import java.util.Random;
 
 public class Sudoku {
     //总生命次数为5
-    private int lifeCounter = 4;
+    public static int lifeCounter = 4;
 
     private static int currentLevel = 0;//当前难度
     private static int currentNumber = 0;//当前题号
@@ -54,14 +54,6 @@ public class Sudoku {
         GameActivity.penPencilButton.setEnabled(false);
         KeyboardFragment.resetKeyboard();
         KeyboardFragment.setEnabledKeyboard(false);
-    }
-
-    public int getLifeCounter() {
-        return lifeCounter;
-    }
-
-    public void setLifeCounter(int life_counter) {
-        this.lifeCounter = life_counter;
     }
 
     public static String[][] getBoardGame() {

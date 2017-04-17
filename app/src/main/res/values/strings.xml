@@ -23,6 +23,13 @@
     <string name="user_license">用户许可协议</string>
     <string name="settings_license_activity_unavailable">暂无用户许可协议</string>
 
+    <!--Switch Activity-->
+    <string name="practice_mode">练习模式</string>
+    <string name="normal_mode">开始游戏</string>
+    <string name="against_mode">联机模式</string>
+    <string name="username_random">手机游客</string>
+
+
     <string name="fragment_keyboard_button_9">9</string>
     <string name="fragment_keyboard_button_8">8</string>
     <string name="fragment_keyboard_button_7">7</string>

@@ -1,8 +1,10 @@
 package com.xbuyt.sudoku.activities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +26,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class MainActivity extends Activity {
 
@@ -67,7 +70,14 @@ public class MainActivity extends Activity {
                                                                        try {
                                                                            JSONObject jsonObject = new JSONObject(response);
                                                                            if (jsonObject.names().get(0).equals("success")) {
-                                                                               Toast.makeText(getApplicationContext(), getString(R.string.dialog_loginSucceed), Toast.LENGTH_SHORT).show();
+                                                                               Intent mainIntent = new Intent().setClass(
+                                                                                       MainActivity.this, SwitchActivity.class);
+                                                                               mainIntent.putExtra("online", true);
+                                                                               SharedPreferences mSharedPreferences = getSharedPreferences("loginUser", Context.MODE_PRIVATE);
+                                                                               SharedPreferences.Editor editor = mSharedPreferences.edit();
+                                                                               editor.putString("username_online", name.getText().toString());
+                                                                               editor.apply();
+                                                                               startActivity(mainIntent);
                                                                            } else if (jsonObject.names().get(0).equals("wrong")) {
                                                                                Toast.makeText(getApplicationContext(), getString(R.string.dialog_loginFailed), Toast.LENGTH_SHORT).show();
                                                                            } else {
@@ -109,7 +119,15 @@ public class MainActivity extends Activity {
                                             @Override
                                             public void onClick(View view) {
                                                 Intent mainIntent = new Intent().setClass(
-                                                        MainActivity.this, GameActivity.class);
+                                                        MainActivity.this, SwitchActivity.class);
+                                                mainIntent.putExtra("online", false);
+                                                SharedPreferences sp = getSharedPreferences("loginUser", 0);
+                                                if (sp.getString("username_offline", "").equals("")) {
+                                                    SharedPreferences mSharedPreferences = getSharedPreferences("loginUser", Context.MODE_PRIVATE);
+                                                    SharedPreferences.Editor editor = mSharedPreferences.edit();
+                                                    editor.putString("username_offline", getString(R.string.username_random) + new Random().nextInt(100000) + 3000000);
+                                                    editor.apply();
+                                                }
                                                 startActivity(mainIntent);
                                             }
                                         }

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.xbuyt.sudoku.R;
 import com.xbuyt.sudoku.activities.GameActivity;
 import com.xbuyt.sudoku.model.Sudoku;
+import com.xbuyt.sudoku.model.Sudoku_Normal;
 import com.xbuyt.sudoku.util.Animations;
 import com.xbuyt.sudoku.util.Constants;
 
@@ -61,7 +62,7 @@ public class CellFragment extends Fragment {
         return view;
     }
 
-    public void cellClicked(final Sudoku sudoku, final int r, final int c) {
+    public void cellClicked(final Sudoku_Normal sudoku, final int r, final int c) {
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,20 +77,20 @@ public class CellFragment extends Fragment {
         });
     }
 
-    private void penMove(Sudoku sudoku, Context context, int r, int c) {
+    private void penMove(Sudoku_Normal sudoku, Context context, int r, int c) {
         setBooleanPaintedCell(true);//设置这块为已填入区域
         resetPencilCell();//如果先前存在草稿模式的数据，则设置为不可见
         if (BoardGameFragment.completedBoardGame(BoardGameFragment.getArrayCell())) {
             sudoku.winGame(context);//如果全部被填满，且都是已绘区域就标记为赢得了比赛
         }
-        if (KeyboardFragment.currentNumber.equals(Sudoku.getBoardGame()[r][c])) {//如果填入的和要求的相同
+        if (KeyboardFragment.currentNumber.equals(Sudoku_Normal.getBoardGame()[r][c])) {//如果填入的和要求的相同
             Animations.annimationCorrectCell(context, layout);//来个动画，表示正确
             mainNumber.setText(KeyboardFragment.currentNumber);//设置那个地方为填入的数字
             setBackgroundColor(R.drawable.corner_radius_correct_cell);//设置背景颜色为和已知区域一样的颜色
         } else {
             Animations.animationIncorrectCell(context, layout);//来个动画，表示错误
             Animations.animationHeartEmpty(context, LifeFragment.arrayIcon[Sudoku.lifeCounter]);//来个动画，表示命-1
-            mainNumber.setText(Sudoku.getBoardGame()[r][c]);//设置那个位置为正确答案，未来考虑可能删除这个
+            mainNumber.setText(Sudoku_Normal.getBoardGame()[r][c]);//设置那个位置为正确答案，未来考虑可能删除这个
             setBackgroundColor(R.drawable.corner_radius_incorrect_cell);//设置颜色为表示错误的颜色
             if (Sudoku.lifeCounter == 0) {
                 sudoku.loseGame(context);//判断是否有命可以继续玩下去，没命了就提示失败

@@ -56,7 +56,7 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         });
-        sudoku.resetGame(context, Constants.EASY_LEVEL_CELL_NUMBER, Constants.MEDIUM_LEVEL_TEXT);
+        sudoku.resetGame(context, Constants.EASY_LEVEL_CELL_NUMBER, Constants.EASY_LEVEL_TEXT);
     }
 
     @Override

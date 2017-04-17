@@ -306,14 +306,14 @@ public class BoardGameFragment extends Fragment {
 
     public static void generateBoardGame(int numberOfCells) {
         clearBoardGame(arrayCell);//重置这些小方格的数据为空
-        printRandomNumberInBoardGame(arrayCell, Sudoku.getBoardGame(), numberOfCells);//随机添加小方格数据
+        printRandomNumberInBoardGame(arrayCell, Sudoku.getBoardGame());//随机添加小方格数据
 
     }
 
-    private static void printRandomNumberInBoardGame(CellFragment[][] arrayCellFragment, String[][] boardGame, int numberOfCells) {
+    private static void printRandomNumberInBoardGame(CellFragment[][] arrayCellFragment, String[][] boardGame) {
         Random rndRow = new Random();
         Random rndColumn = new Random();
-        for (int i = 0; i < numberOfCells; i++) {
+        for (int i = 0; i < 40; i++) {
             int r = rndRow.nextInt(9);//生成随机数
             int c = rndColumn.nextInt(9);
             arrayCellFragment[r][c].setMainNumber(boardGame[r][c]);//从Suduko类的boardGame中的同位置获取数据到指定坐标

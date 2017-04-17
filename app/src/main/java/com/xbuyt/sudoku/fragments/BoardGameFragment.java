@@ -7,13 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.xbuyt.sudoku.R;
-import com.xbuyt.sudoku.model.Sudoku_Normal;
+import com.xbuyt.sudoku.model.Sudoku;
 
 import java.util.Random;
 
 public class BoardGameFragment extends Fragment {
 
-    Sudoku_Normal sudoku = new Sudoku_Normal();
+    Sudoku sudoku = new Sudoku();
 
     private static CellFragment arrayCell[][] = new CellFragment[9][9];
 
@@ -306,7 +306,7 @@ public class BoardGameFragment extends Fragment {
 
     public static void generateBoardGame(int numberOfCells) {
         clearBoardGame(arrayCell);//重置这些小方格的数据为空
-        printRandomNumberInBoardGame(arrayCell, Sudoku_Normal.getBoardGame());//随机添加小方格数据
+        printRandomNumberInBoardGame(arrayCell, Sudoku.getBoardGame());//随机添加小方格数据
 
     }
 

@@ -13,12 +13,12 @@ import android.widget.Chronometer;
 import android.widget.TextView;
 
 import com.xbuyt.sudoku.R;
-import com.xbuyt.sudoku.model.Sudoku_Normal;
+import com.xbuyt.sudoku.model.Sudoku;
 import com.xbuyt.sudoku.util.Constants;
 
 public class GameActivity extends AppCompatActivity {
 
-    Sudoku_Normal sudoku = new Sudoku_Normal();
+    Sudoku sudoku = new Sudoku();
 
     private static TextView textLevel;
     public static Button penPencilButton;

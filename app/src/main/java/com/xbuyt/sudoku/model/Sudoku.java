@@ -9,6 +9,7 @@ import com.xbuyt.sudoku.fragments.BoardGameFragment;
 import com.xbuyt.sudoku.fragments.KeyboardFragment;
 import com.xbuyt.sudoku.fragments.LifeFragment;
 import com.xbuyt.sudoku.util.AlertDialog;
+import com.xbuyt.sudoku.util.Constants;
 
 import java.util.Random;
 
@@ -16,31 +17,13 @@ public class Sudoku {
     //总生命次数为5
     private int lifeCounter = 4;
 
-    public static int currentLevel = 0;//当前难度
+    private static int currentLevel = 0;//当前难度
     private static int currentNumber = 0;//当前题号
-
-    //数独题目，四维数组，分别表示难度，题号，横坐标，纵坐标
-    private static String[][][][] boardGame =
-            {
-                    {
-                            {
-                                    {"8", "2", "7", "1", "5", "4", "3", "9", "6"},
-                                    {"9", "6", "5", "3", "2", "7", "1", "4", "8"},
-                                    {"3", "4", "1", "6", "8", "9", "7", "5", "2"},
-                                    {"5", "9", "3", "4", "6", "8", "2", "7", "1"},
-                                    {"4", "7", "2", "5", "1", "3", "6", "8", "9"},
-                                    {"6", "1", "8", "9", "7", "2", "4", "3", "5"},
-                                    {"7", "8", "6", "2", "3", "5", "9", "1", "4"},
-                                    {"1", "5", "4", "7", "9", "6", "8", "2", "3"},
-                                    {"2", "3", "9", "8", "4", "1", "5", "6", "7"}
-                            }
-                    }
-            };
 
     //重新开始游戏
     public void resetGame(Context context, int numberOfCells, String level) {
         currentLevel = numberOfCells;
-        currentNumber = new Random().nextInt(boardGame[currentLevel].length);//boardGame_easy.length表示当前数组的长度
+        currentNumber = new Random().nextInt(Constants.BOARD_GAME[currentLevel].length);//boardGame_easy.length表示当前数组的长度
         BoardGameFragment.generateBoardGame(numberOfCells);
         LifeFragment.restartIcons(context);
         lifeCounter = 4;
@@ -82,6 +65,6 @@ public class Sudoku {
     }
 
     public static String[][] getBoardGame() {
-        return boardGame[currentLevel][currentNumber];
+        return Constants.BOARD_GAME[currentLevel][currentNumber];
     }
 }

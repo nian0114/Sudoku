@@ -77,20 +77,23 @@ public class Sudoku {
         GameActivity.penPencilButton.setEnabled(false);//禁止点击答题模式Button
         KeyboardFragment.resetKeyboard();//把数字区域颜色统一为默认颜色
         KeyboardFragment.setEnabledKeyboard(false);//禁用数字区域的Button
-        SharedPreferences sp = context.getSharedPreferences("loginUser", 0);
-        DateFormat format = new SimpleDateFormat("mm:ss", Locale.US);
 
-        try {
-            Date date1 = format.parse(GameActivity.chronometer.getText().toString());
-            Date date2 = format.parse(sp.getString("chronometer", "00:00"));
-            if (date1.before(date2)) {
-                SharedPreferences mSharedPreferences = context.getSharedPreferences("loginUser", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = mSharedPreferences.edit();
-                editor.putString("chronometer", GameActivity.chronometer.getText().toString());
-                editor.apply();
+        if (Sudoku.mode == 2) {//仅开始游戏支持计时存档
+            SharedPreferences sp = context.getSharedPreferences("loginUser", 0);
+            DateFormat format = new SimpleDateFormat("mm:ss", Locale.US);
+
+            try {
+                Date date1 = format.parse(GameActivity.chronometer.getText().toString());
+                Date date2 = format.parse(sp.getString("chronometer", "00:00"));
+                if (date1.before(date2)) {
+                    SharedPreferences mSharedPreferences = context.getSharedPreferences("loginUser", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = mSharedPreferences.edit();
+                    editor.putString("chronometer", GameActivity.chronometer.getText().toString());
+                    editor.apply();
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
-        } catch (ParseException e) {
-            e.printStackTrace();
         }
     }
 

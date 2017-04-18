@@ -78,9 +78,6 @@ public class CellFragment extends Fragment {
 
     private void penMove(Sudoku sudoku, Context context, int r, int c) {
         resetPencilCell();//如果先前存在草稿模式的数据，则设置为不可见
-        if (BoardGameFragment.completedBoardGame(BoardGameFragment.getArrayCell())) {
-            sudoku.winGame(context);//如果全部被填满，且都是已绘区域就标记为赢得了比赛
-        }
 
         for (int i = 0; i < Sudoku.list.size(); ) {
             if (Integer.parseInt(KeyboardFragment.currentNumber) == Sudoku.list.get(i)[r][c]) {
@@ -112,6 +109,10 @@ public class CellFragment extends Fragment {
                     Sudoku.list.addAll(Sudoku.list_work);
                 }
             }
+        }
+
+        if (BoardGameFragment.completedBoardGame(BoardGameFragment.getArrayCell())) {
+            sudoku.winGame(context);//如果全部被填满，且都是已绘区域就标记为赢得了比赛
         }
     }
 

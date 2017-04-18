@@ -16,6 +16,7 @@ import com.xbuyt.sudoku.R;
 
 public class SwitchActivity extends AppCompatActivity {
     private TextView mProfileName;
+    private TextView mMaxSource;
     private CardView mPracticeMode;
     private CardView mNormalMode;
     private CardView mOnlineMode;
@@ -29,15 +30,18 @@ public class SwitchActivity extends AppCompatActivity {
         Boolean boolOnline = intent.getBooleanExtra("online", false);
 
         mProfileName = ((TextView) findViewById(R.id.profile_name));
+        mMaxSource = (TextView) findViewById(R.id.source);
         mPracticeMode = ((CardView) findViewById(R.id.practice));
         mNormalMode = ((CardView) findViewById(R.id.normal));
         mOnlineMode = ((CardView) findViewById(R.id.online));
 
+        SharedPreferences sp = getSharedPreferences("loginUser", 0);
+
+        mMaxSource.setText(getString(R.string.best_source) + sp.getString("chronometer", getString(R.string.no_source)));
+
         if (boolOnline) {
-            SharedPreferences sp = getSharedPreferences("loginUser", 0);
             mProfileName.setText(sp.getString("username_online", getString(R.string.username_random)));
         } else {
-            SharedPreferences sp = getSharedPreferences("loginUser", 0);
             mProfileName.setText(sp.getString("username_offline", getString(R.string.username_random)));
         }
 

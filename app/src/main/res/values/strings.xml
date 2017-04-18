@@ -28,6 +28,8 @@
     <string name="normal_mode">开始游戏</string>
     <string name="against_mode">联机模式</string>
     <string name="username_random">手机游客</string>
+    <string name="best_source">最佳成绩:</string>
+    <string name="no_source">暂无数据</string>
 
 
     <string name="fragment_keyboard_button_9">9</string>

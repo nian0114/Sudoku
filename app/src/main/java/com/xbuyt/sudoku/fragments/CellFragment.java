@@ -77,24 +77,40 @@ public class CellFragment extends Fragment {
     }
 
     private void penMove(Sudoku sudoku, Context context, int r, int c) {
-        setBooleanPaintedCell(true);//设置这块为已填入区域
         resetPencilCell();//如果先前存在草稿模式的数据，则设置为不可见
         if (BoardGameFragment.completedBoardGame(BoardGameFragment.getArrayCell())) {
             sudoku.winGame(context);//如果全部被填满，且都是已绘区域就标记为赢得了比赛
         }
-        if (KeyboardFragment.currentNumber.equals(Sudoku.getBoardGame()[r][c])) {//如果填入的和要求的相同
-            Animations.annimationCorrectCell(context, layout);//来个动画，表示正确
-            mainNumber.setText(KeyboardFragment.currentNumber);//设置那个地方为填入的数字
-            setBackgroundColor(R.drawable.corner_radius_correct_cell);//设置背景颜色为和已知区域一样的颜色
-        } else {
+
+        for (int i = 0; i < Sudoku.list.size(); ) {
+            if (Integer.parseInt(KeyboardFragment.currentNumber) == Sudoku.list.get(i)[r][c]) {
+                setBooleanPaintedCell(true);//设置这块为已填入区域
+                Animations.annimationCorrectCell(context, layout);//来个动画，表示正确
+                mainNumber.setText(KeyboardFragment.currentNumber);//设置那个地方为填入的数字
+                setBackgroundColor(R.drawable.corner_radius_correct_cell);//设置背景颜色为和已知区域一样的颜色
+                Sudoku.list_work.clear();
+                Sudoku.list_work.addAll(Sudoku.list);
+                i++;
+            } else {
+                Sudoku.list.remove(i);
+                i = 0;
+            }
+        }
+
+        if (Sudoku.list.size() == 0) {
             Animations.animationIncorrectCell(context, layout);//来个动画，表示错误
             Animations.animationHeartEmpty(context, LifeFragment.arrayIcon[Sudoku.lifeCounter]);//来个动画，表示命-1
-            mainNumber.setText(Sudoku.getBoardGame()[r][c]);//设置那个位置为正确答案，未来考虑可能删除这个
             setBackgroundColor(R.drawable.corner_radius_incorrect_cell);//设置颜色为表示错误的颜色
             if (Sudoku.lifeCounter == 0) {
                 sudoku.loseGame(context);//判断是否有命可以继续玩下去，没命了就提示失败
             } else {
                 Sudoku.lifeCounter = Sudoku.lifeCounter - 1;//还有命就继续玩，但是命-1
+                Sudoku.list.clear();
+                if (Sudoku.list_work.size() == 0) {
+                    Sudoku.getBoardGameResult();
+                } else {
+                    Sudoku.list.addAll(Sudoku.list_work);
+                }
             }
         }
     }

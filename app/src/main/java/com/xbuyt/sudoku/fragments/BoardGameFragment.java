@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 import com.xbuyt.sudoku.R;
 import com.xbuyt.sudoku.model.Sudoku;
 
-import java.util.Random;
-
 public class BoardGameFragment extends Fragment {
 
     Sudoku sudoku = new Sudoku();
@@ -311,15 +309,14 @@ public class BoardGameFragment extends Fragment {
     }
 
     private static void printRandomNumberInBoardGame(CellFragment[][] arrayCellFragment, String[][] boardGame) {//随机显示34-42个空格
-        Random rndRow = new Random();
-        Random rndColumn = new Random();
-        Random rndCellNumber = new Random();
-        for (int i = 0; i < rndCellNumber.nextInt(8) + 35; i++) {
-            int r = rndRow.nextInt(9);//生成随机数
-            int c = rndColumn.nextInt(9);
-            arrayCellFragment[r][c].setMainNumber(boardGame[r][c]);//从Suduko类的boardGame中的同位置获取数据到指定坐标
-            arrayCellFragment[r][c].setBackgroundColor(R.drawable.corner_radius_initial_cell);//设置不一样的颜色
-            arrayCellFragment[r][c].setBooleanPaintedCell(true);//设置该块的绘制区域标记为true(即正确)
+        for (int r = 0; r < 9; r++) {
+            for (int c = 0; c < 9; c++) {
+                if (Integer.parseInt(boardGame[r][c]) != 0) {
+                    arrayCellFragment[r][c].setMainNumber(boardGame[r][c]);//从Suduko类的boardGame中的同位置获取数据到指定坐标
+                    arrayCellFragment[r][c].setBackgroundColor(R.drawable.corner_radius_initial_cell);//设置不一样的颜色
+                    arrayCellFragment[r][c].setBooleanPaintedCell(true);//设置该块的绘制区域标记为true(即正确)
+                }
+            }
         }
     }
 

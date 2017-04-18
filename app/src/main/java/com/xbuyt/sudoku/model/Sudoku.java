@@ -11,6 +11,7 @@ import com.xbuyt.sudoku.fragments.LifeFragment;
 import com.xbuyt.sudoku.util.AlertDialog;
 import com.xbuyt.sudoku.util.Constants;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Sudoku {
@@ -20,9 +21,15 @@ public class Sudoku {
     private static int currentLevel = 0;//当前难度
     private static int currentNumber = 0;//当前题号
 
+    private static int[][] shuDu = new int[9][9];
+    public static ArrayList<int[][]> list = new ArrayList<int[][]>();
+    public static ArrayList<int[][]> list_work = new ArrayList<int[][]>();
+
     //重新开始游戏
     public void resetGame(Context context, int numberOfCells, String level) {
         currentLevel = numberOfCells;
+        list.clear();
+        list_work.clear();
         currentNumber = new Random().nextInt(Constants.BOARD_GAME[currentLevel].length);//boardGame_easy.length表示当前数组的长度
         BoardGameFragment.generateBoardGame(numberOfCells);
         LifeFragment.restartIcons(context);
@@ -34,6 +41,7 @@ public class Sudoku {
         GameActivity.penPencilButton.setEnabled(true);
         KeyboardFragment.resetKeyboard();
         KeyboardFragment.setEnabledKeyboard(true);
+        getBoardGameResult();
     }
 
     //赢了后的操作
@@ -58,5 +66,81 @@ public class Sudoku {
 
     public static String[][] getBoardGame() {
         return Constants.BOARD_GAME[currentLevel][currentNumber];
+    }
+
+    public static void getBoardGameResult() {
+        for (int i = 0; i < 9; i++)
+            for (int j = 0; j < 9; j++) {
+                shuDu[i][j] = Integer.parseInt(getBoardGame()[i][j]);
+            }
+
+        shuDu_solution(0);
+    }
+
+
+    /**
+     * 判断在九宫格中的坐标(x,y)的位置上插入value，是否符合规则
+     *
+     * @param x
+     * @param y
+     * @param value
+     * @return
+     */
+    public static Boolean legal(int a[][], int x, int y, int value) {
+
+        for (int i = 0; i < 9; i++) {
+            //如果列中有value，则返回false
+            if (i != x && a[i][y] == value) {
+                return false;
+            }
+            //如果行中有value，则返回false
+            if (i != y && a[x][i] == value) {
+                return false;
+            }
+        }
+
+        //(minX,minY)是(x,y)所属小九宫格的左上角的坐标
+        int minX = x / 3 * 3;
+        int minY = y / 3 * 3;
+
+        for (int i = minX; i < minX + 3; i++) {
+            for (int j = minY; j < minY + 3; j++) {
+                //如果小九宫格中的非(x,y)的坐标上的值为value，返回false
+                if (i != x && j != y && a[i][j] == value) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    public static void shuDu_solution(int k) {
+        if (k == 81) {
+            /*
+            修复ArrayList的值均为原始值的问题
+                        list.add(shuDu);
+            为错误写法，应该new个临时变量，进行add
+            原因是ArrayList.add相当于是做指针链接
+             */
+            int[][] result = new int[9][9];
+            for (int i = 0; i < 9; i++)
+                System.arraycopy(shuDu[i], 0, result[i], 0, 9);
+            list.add(result);
+            return;
+        }
+        int x = k / 9;
+        int y = k % 9;
+        if (shuDu[x][y] == 0) {
+            for (int i = 1; i <= 9; i++) {
+                shuDu[x][y] = i;
+                if (legal(shuDu, x, y, i)) {
+                    shuDu_solution(k + 1);
+                }
+            }
+            shuDu[x][y] = 0;
+        } else {
+            shuDu_solution(k + 1);
+        }
     }
 }

@@ -82,7 +82,8 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.level_menu, menu);
+        if (Sudoku.mode == 1)//仅练习模式支持选择难度
+            getMenuInflater().inflate(R.menu.level_menu, menu);
         return true;
     }
 

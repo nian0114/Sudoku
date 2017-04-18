@@ -17,7 +17,7 @@ public class AlertDialog {
             @Override
             public void onClick(DialogInterface dialog, int which) {//选择是，重开游戏
                 Sudoku sudoku = new Sudoku();
-                sudoku.resetGame(context, Constants.MEDIUM_LEVEL_CELL_NUMBER, Constants.MEDIUM_LEVEL_TEXT);
+                sudoku.resetGame(context, Constants.EASY_LEVEL_CELL_NUMBER, Constants.EASY_LEVEL_TEXT);
             }
         });
         dialog.setNegativeButton(android.R.string.cancel, null);//如果选择取消，就算了，什么都别做

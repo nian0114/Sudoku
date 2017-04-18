@@ -44,6 +44,9 @@ public class GameActivity extends AppCompatActivity {
 
         context = getApplicationContext();
 
+        if (Sudoku.mode == 2) {
+            textLevel.setVisibility(View.INVISIBLE);
+        }
         penPencilButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -50,6 +50,8 @@ public class Sudoku {
                     shuDu_gen[i][j] = String.valueOf(generateShuDu[i][j]);
                 }
             }
+        } else if (mode == 1) {
+            GameActivity.setTextLevel(level);
         }
         currentLevel = numberOfCells;
         list.clear();
@@ -58,7 +60,6 @@ public class Sudoku {
         BoardGameFragment.generateBoardGame(numberOfCells);
         LifeFragment.restartIcons(context);
         lifeCounter = 4;
-        GameActivity.setTextLevel(level);
         GameActivity.chronometer.setBase(SystemClock.elapsedRealtime());
         GameActivity.chronometer.start();
         GameActivity.penPencilButton.setText(R.string.activity_board_game_pen_text);

@@ -21,18 +21,36 @@ import java.util.Locale;
 import java.util.Random;
 
 public class Sudoku {
+    public static int mode = 1;
+
     //总生命次数为5
     public static int lifeCounter = 4;
 
     private static int currentLevel = 0;//当前难度
     private static int currentNumber = 0;//当前题号
 
+    private static int jiuGongGe[][] = new int[9][9];
+    private static Boolean bl = false;
+    private static int end_jiuGongGe[][] = new int[9][9];
+
     private static int[][] shuDu = new int[9][9];
+    private static String[][] shuDu_gen = new String[9][9];
+
     public static ArrayList<int[][]> list = new ArrayList<int[][]>();
     public static ArrayList<int[][]> list_work = new ArrayList<int[][]>();
 
     //重新开始游戏
     public void resetGame(Context context, int numberOfCells, String level) {
+        if (mode == 2) {
+            bl = false;
+            generateJiugongGe(0);
+            int generateShuDu[][] = generateShuDu(end_jiuGongGe);
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 9; j++) {
+                    shuDu_gen[i][j] = String.valueOf(generateShuDu[i][j]);
+                }
+            }
+        }
         currentLevel = numberOfCells;
         list.clear();
         list_work.clear();
@@ -86,7 +104,17 @@ public class Sudoku {
     }
 
     public static String[][] getBoardGame() {
-        return Constants.BOARD_GAME[currentLevel][currentNumber];
+        switch (mode) {
+            case 1:
+                return Constants.BOARD_GAME[currentLevel][currentNumber];
+            case 2:
+                return shuDu_gen;
+            case 3:
+                return Constants.BOARD_GAME[currentLevel][currentNumber];
+            default:
+                return Constants.BOARD_GAME[currentLevel][currentNumber];
+
+        }
     }
 
     public static void getBoardGameResult() {
@@ -164,4 +192,94 @@ public class Sudoku {
             shuDu_solution(k + 1);
         }
     }
+
+    /**
+     * 随机生成九宫格
+     *
+     * @param k
+     */
+    public static void generateJiugongGe(int k) {
+        if (bl) {
+            return;
+        }
+        if (k == 81) {
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 9; j++) {
+                    end_jiuGongGe[i][j] = jiuGongGe[i][j];
+                }
+            }
+            bl = true;
+            return;
+        }
+
+        //取得第k+1个值所对应的坐标(x,y),k是从0开始的。
+        int x = k / 9;
+        int y = k % 9;
+
+        if (jiuGongGe[x][y] == 0) {
+            //index用来判断是否已经完全随机生成了1-9这个9个数
+            int index = 0;
+            while (index < 9) {
+                //动态数组list用来储存已经随机生成的1-9的数字
+                ArrayList list = new ArrayList(9);
+                Random random = new Random();
+                int i = random.nextInt(9) + 1;
+                //当list中包含数字i时，在重新生成1-9的数字
+                while (list.contains(i))
+                    i = random.nextInt(9) + 1;
+                list.add(i);
+                index++;
+                jiuGongGe[x][y] = i;
+                //legal()函数是判断在九宫格中的坐标(x,y)的位置上插入i，是否符合规则
+                if (legal(jiuGongGe, x, y, i)) {
+                    generateJiugongGe(k + 1);
+                }
+            }
+            jiuGongGe[x][y] = 0;     //回溯时，将坐标(x,y)的值置零
+
+        } else {
+            generateJiugongGe(k + 1);
+        }
+    }
+
+    /**
+     * 第二部分，通过第一部分生成的九宫格，对其中的81个数字随机选取46位（81-35=46）置零，以此形成数独游戏。
+     *
+     * @param ArryJiuGongGe
+     * @return
+     */
+    public static int[][] generateShuDu(int ArryJiuGongGe[][]) {
+        Random random = new Random();
+        ArrayList list = new ArrayList(35);
+        for (int i = 0; i < 35; i++) {
+            int index = random.nextInt(81);
+            while (list.contains(index)) {
+                index = random.nextInt(81);
+            }
+            list.add(index);
+        }
+        int shuDu[][] = new int[9][9];
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (!list.contains(i * 9 + j)) {
+                    shuDu[i][j] = 0;
+                } else {
+                    shuDu[i][j] = ArryJiuGongGe[i][j];
+                }
+            }
+        }
+        return shuDu;
+    }
+
+    //打印二维数组a[m][n]
+    public static void displayArray(int a[][], int m, int n) {
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print(a[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+
 }

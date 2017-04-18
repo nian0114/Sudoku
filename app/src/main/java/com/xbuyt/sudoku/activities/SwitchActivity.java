@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.xbuyt.sudoku.R;
+import com.xbuyt.sudoku.model.Sudoku;
 
 /**
  * Created by Nian on 17/4/15.
@@ -50,6 +51,7 @@ public class SwitchActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent mainIntent = new Intent().setClass(
                         SwitchActivity.this, GameActivity.class);
+                Sudoku.mode = 1;
                 startActivity(mainIntent);
             }
         });
@@ -59,6 +61,7 @@ public class SwitchActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent mainIntent = new Intent().setClass(
                         SwitchActivity.this, GameActivity.class);
+                Sudoku.mode = 2;
                 startActivity(mainIntent);
             }
         });
@@ -68,6 +71,7 @@ public class SwitchActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent mainIntent = new Intent().setClass(
                         SwitchActivity.this, GameActivity.class);
+                Sudoku.mode = 3;
                 startActivity(mainIntent);
             }
         });

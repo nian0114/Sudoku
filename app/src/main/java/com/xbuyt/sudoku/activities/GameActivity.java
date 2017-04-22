@@ -186,10 +186,6 @@ public class GameActivity extends AppCompatActivity {
                     boolean suc = msg.arg1 == 1;
                     if (data != null && suc) {
 
-                        ChatMessage chatMsg = new ChatMessage();
-                        chatMsg.messageSender = ChatMessage.MSG_SENDER_ME;
-                        chatMsg.messageContent = new String(data);
-
                         if (!network_Sudoku[0][0].equals("")) {
                             sudoku.resetGame(context, Constants.EASY_LEVEL_CELL_NUMBER, Constants.EASY_LEVEL_TEXT);
                         }
@@ -202,13 +198,10 @@ public class GameActivity extends AppCompatActivity {
                     byte[] data = (byte[]) msg.obj;
                     if (data != null) {
 
-                        ChatMessage chatMsg = new ChatMessage();
-                        chatMsg.messageSender = ChatMessage.MSG_SENDER_OTHERS;
-                        chatMsg.messageContent = new String(data);
+                        String messageContent;
+                        messageContent = new String(data);
 
-                        Log.d("TAG", chatMsg.messageContent);
-
-                        if (chatMsg.messageContent.equals("win")) {
+                        if (messageContent.equals("win")) {
                             GameActivity.chronometer.stop();
                             GameActivity.penPencilButton.setText(R.string.activity_board_game_pen_text);
                             GameActivity.penPencilButton.setEnabled(false);
@@ -217,7 +210,7 @@ public class GameActivity extends AppCompatActivity {
                             Toast.makeText(context, "你输了", Toast.LENGTH_LONG).show();
                         } else {
                             try {
-                                network_Sudoku = convertToArray(chatMsg.messageContent, 9, 9);
+                                network_Sudoku = convertToArray(messageContent, 9, 9);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }

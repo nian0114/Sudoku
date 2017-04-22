@@ -10,6 +10,7 @@ public class AlertDialog {
 
     public static void gameOver(final Context context) {
         android.support.v7.app.AlertDialog.Builder dialog = new android.support.v7.app.AlertDialog.Builder(context);//新建Dialog类型的变量
+
         dialog.setTitle("Game over");//提示游戏结束
         dialog.setMessage("Do you want to restart?");//你想重来吗
         dialog.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
@@ -25,6 +26,7 @@ public class AlertDialog {
 
     public static void winner(final Context context) {
         android.support.v7.app.AlertDialog.Builder dialog = new android.support.v7.app.AlertDialog.Builder(context);
+
         dialog.setTitle("You win");
         dialog.setMessage("Your score: " + GameActivity.chronometer.getText() + "\nDo you want to restart?");//多了个显示当前用时
         dialog.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {

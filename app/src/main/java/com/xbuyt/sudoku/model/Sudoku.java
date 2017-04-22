@@ -29,12 +29,12 @@ public class Sudoku {
     private static int currentLevel = 0;//当前难度
     private static int currentNumber = 0;//当前题号
 
-    public static int jiuGongGe[][] = new int[9][9];
-    public static Boolean bl = false;
-    public static int end_jiuGongGe[][] = new int[9][9];
+    private static int jiuGongGe[][] = new int[9][9];
+    private static Boolean bl = false;
+    private static int end_jiuGongGe[][] = new int[9][9];
 
-    public static int[][] shuDu = new int[9][9];
-    public static String[][] shuDu_gen = new String[9][9];
+    private static int[][] shuDu = new int[9][9];
+    private static String[][] shuDu_gen = new String[9][9];
 
     public static ArrayList<int[][]> list = new ArrayList<int[][]>();
     public static ArrayList<int[][]> list_work = new ArrayList<int[][]>();
@@ -72,7 +72,6 @@ public class Sudoku {
     //赢了后的操作
     public void winGame(Context context) {
         AlertDialog.winner(context);//弹窗恭喜
-        GameActivity.sendMessage("win");
         GameActivity.chronometer.stop();//计时暂停
         GameActivity.penPencilButton.setText(R.string.activity_board_game_pen_text);//恢复模式为答题模式
         GameActivity.penPencilButton.setEnabled(false);//禁止点击答题模式Button
@@ -95,7 +94,10 @@ public class Sudoku {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+        } else if (Sudoku.mode == 3) {
+            GameActivity.sendMessage("win");
         }
+
     }
 
     //无法继续的操作
@@ -115,7 +117,7 @@ public class Sudoku {
             case 2:
                 return shuDu_gen;
             case 3:
-                return GameActivity.network_Sudoku;
+                return Constants.BOARD_GAME[currentLevel][currentNumber];
             default:
                 return Constants.BOARD_GAME[currentLevel][currentNumber];
 

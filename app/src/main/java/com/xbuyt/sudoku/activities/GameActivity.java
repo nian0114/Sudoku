@@ -62,36 +62,39 @@ public class GameActivity extends AppCompatActivity {
 
         context = getApplicationContext();
 
-        //申请蓝牙，如果没开，提示用户开
-        BluetoothAdapter BTAdapter = BluetoothAdapter.getDefaultAdapter();
-        if (!BTAdapter.isEnabled()) {
-            Intent i = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivity(i);
-            finish();
-            return;
-        }
-
-        int hasPermission = ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
-        if (hasPermission != PackageManager.PERMISSION_GRANTED) {
-
-            ActivityCompat.requestPermissions(this,
-                    new String[]{
-                            android.Manifest.permission.ACCESS_COARSE_LOCATION},
-                    0);
-            finish();
-            return;
-        }
-
-        mConnectionManager = new ConnectionManager(mConnectionListener);
-        mConnectionManager.startListen();
-
-        if (BTAdapter.getScanMode() != BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE) {
-            Intent i = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-            i.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 0);
-            startActivity(i);
-        }
-
         if (Sudoku.mode == 3) {
+            sent = false;
+            isHost = false;
+
+            //申请蓝牙，如果没开，提示用户开
+            BluetoothAdapter BTAdapter = BluetoothAdapter.getDefaultAdapter();
+            if (!BTAdapter.isEnabled()) {
+                Intent i = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                startActivity(i);
+                finish();
+                return;
+            }
+
+            int hasPermission = ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
+            if (hasPermission != PackageManager.PERMISSION_GRANTED) {
+
+                ActivityCompat.requestPermissions(this,
+                        new String[]{
+                                android.Manifest.permission.ACCESS_COARSE_LOCATION},
+                        0);
+                finish();
+                return;
+            }
+
+            mConnectionManager = new ConnectionManager(mConnectionListener);
+            mConnectionManager.startListen();
+
+            if (BTAdapter.getScanMode() != BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE) {
+                Intent i = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+                i.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 0);
+                startActivity(i);
+            }
+
             textLevel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -109,11 +112,13 @@ public class GameActivity extends AppCompatActivity {
 
                 }
             });
+        } else {
+            if (Sudoku.mode == 2) {
+                textLevel.setVisibility(View.INVISIBLE);
+            }
+            sudoku.resetGame(context, Constants.EASY_LEVEL_CELL_NUMBER, Constants.EASY_LEVEL_TEXT);
         }
 
-        if (Sudoku.mode == 2) {
-            textLevel.setVisibility(View.INVISIBLE);
-        }
         penPencilButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -126,9 +131,6 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         });
-        if (Sudoku.mode == 1 || Sudoku.mode == 2)
-            sudoku.resetGame(context, Constants.EASY_LEVEL_CELL_NUMBER, Constants.EASY_LEVEL_TEXT);
-
     }
 
     @Override
@@ -185,9 +187,15 @@ public class GameActivity extends AppCompatActivity {
                     byte[] data = (byte[]) msg.obj;
                     boolean suc = msg.arg1 == 1;
                     if (data != null && suc) {
+                        String messageContent;
+                        messageContent = new String(data);
 
                         if (!network_Sudoku[0][0].equals("")) {
                             sudoku.resetGame(context, Constants.EASY_LEVEL_CELL_NUMBER, Constants.EASY_LEVEL_TEXT);
+                        }
+
+                        if (messageContent.equals("win")) {
+                            sent = false;
                         }
                     }
                 }
@@ -202,6 +210,7 @@ public class GameActivity extends AppCompatActivity {
                         messageContent = new String(data);
 
                         if (messageContent.equals("win")) {
+                            sent = false;
                             GameActivity.chronometer.stop();
                             GameActivity.penPencilButton.setText(R.string.activity_board_game_pen_text);
                             GameActivity.penPencilButton.setEnabled(false);

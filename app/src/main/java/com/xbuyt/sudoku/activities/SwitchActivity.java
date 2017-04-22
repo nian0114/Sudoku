@@ -70,7 +70,7 @@ public class SwitchActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent mainIntent = new Intent().setClass(
-                        SwitchActivity.this, ChatActivity.class);
+                        SwitchActivity.this, GameActivity.class);
                 Sudoku.mode = 3;
                 startActivity(mainIntent);
             }

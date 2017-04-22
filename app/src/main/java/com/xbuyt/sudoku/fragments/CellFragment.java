@@ -97,26 +97,32 @@ public class CellFragment extends Fragment {
         if (Sudoku.list.size() == 0) {
             Animations.animationIncorrectCell(context, layout);//来个动画，表示错误
             setBackgroundColor(R.drawable.corner_radius_incorrect_cell);//设置颜色为表示错误的颜色
-            if (Sudoku.mode == 1) {
-                Sudoku.list.clear();
-                if (Sudoku.list_work.size() == 0) {
-                    Sudoku.getBoardGameResult();
-                } else {
-                    Sudoku.list.addAll(Sudoku.list_work);
-                }
-            } else {
-                Animations.animationHeartEmpty(context, LifeFragment.arrayIcon[Sudoku.lifeCounter]);//来个动画，表示命-1
-                if (Sudoku.lifeCounter == 0) {
-                    sudoku.loseGame(context);//判断是否有命可以继续玩下去，没命了就提示失败
-                } else {
-                    Sudoku.lifeCounter = Sudoku.lifeCounter - 1;//还有命就继续玩，但是命-1
+            switch (Sudoku.mode) {
+                case 3:
+                    GameActivity.chronometer.setBase(GameActivity.chronometer.getBase() - 10 * 1000);//每次答错+10s(10*1000ms)
+                case 1:
                     Sudoku.list.clear();
                     if (Sudoku.list_work.size() == 0) {
                         Sudoku.getBoardGameResult();
                     } else {
                         Sudoku.list.addAll(Sudoku.list_work);
                     }
-                }
+                    break;
+                default:
+                case 2:
+                    Animations.animationHeartEmpty(context, LifeFragment.arrayIcon[Sudoku.lifeCounter]);//来个动画，表示命-1
+                    if (Sudoku.lifeCounter == 0) {
+                        sudoku.loseGame(context);//判断是否有命可以继续玩下去，没命了就提示失败
+                    } else {
+                        Sudoku.lifeCounter = Sudoku.lifeCounter - 1;//还有命就继续玩，但是命-1
+                        Sudoku.list.clear();
+                        if (Sudoku.list_work.size() == 0) {
+                            Sudoku.getBoardGameResult();
+                        } else {
+                            Sudoku.list.addAll(Sudoku.list_work);
+                        }
+                    }
+                    break;
             }
         }
 

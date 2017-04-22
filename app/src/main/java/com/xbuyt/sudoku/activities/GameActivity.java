@@ -5,7 +5,6 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -42,6 +41,7 @@ public class GameActivity extends AppCompatActivity {
     public static Chronometer chronometer;
     public static String[][] network_Sudoku = new String[9][9];
     public static boolean sent = false;
+    public static boolean isHost = false;
     private Context context;
 
     private long lastStopTime;
@@ -94,7 +94,7 @@ public class GameActivity extends AppCompatActivity {
             textLevel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    isHost = true;
                     if (mConnectionManager.getCurrentConnectState() == ConnectionManager.CONNECT_STATE_CONNECTED) {
                         mConnectionManager.disconnect();
 
@@ -189,8 +189,9 @@ public class GameActivity extends AppCompatActivity {
                         chatMsg.messageSender = ChatMessage.MSG_SENDER_ME;
                         chatMsg.messageContent = new String(data);
 
-                        Log.d("TAG1", chatMsg.messageContent);
-
+                        if (!network_Sudoku[0][0].equals("")) {
+                            sudoku.resetGame(context, Constants.EASY_LEVEL_CELL_NUMBER, Constants.EASY_LEVEL_TEXT);
+                        }
                     }
                 }
                 break;
@@ -205,18 +206,11 @@ public class GameActivity extends AppCompatActivity {
                         chatMsg.messageContent = new String(data);
 
                         Log.d("TAG", chatMsg.messageContent);
-                        if (chatMsg.messageContent.equals("web")) {
-                            Uri uri = Uri.parse("https://www.ttotoo.com");   //指定网址
-                            Intent intent = new Intent();
-                            intent.setAction(Intent.ACTION_VIEW);           //指定Action
-                            intent.setData(uri);                            //设置Uri
-                            startActivity(intent);        //启动Activity
-                        } else if (chatMsg.messageContent.equals("webt")) {
-                            Uri uri = Uri.parse("https://www.baidu.com");   //指定网址
-                            Intent intent = new Intent();
-                            intent.setAction(Intent.ACTION_VIEW);           //指定Action
-                            intent.setData(uri);                            //设置Uri
-                            startActivity(intent);        //启动Activity
+
+                        network_Sudoku = convertToArray(chatMsg.messageContent, 9, 9);
+
+                        if (!network_Sudoku[0][0].equals("")) {
+                            sudoku.resetGame(context, Constants.EASY_LEVEL_CELL_NUMBER, Constants.EASY_LEVEL_TEXT);
                         }
                     }
 
@@ -258,9 +252,7 @@ public class GameActivity extends AppCompatActivity {
 
     };
 
-    public void sendMessage() {
-        String content = "web";
-
+    public void sendMessage(String content) {
         if (content != null) {
             content = content.trim();
             if (content.length() > 0) {
@@ -304,15 +296,42 @@ public class GameActivity extends AppCompatActivity {
 
         if (mConnectionManager.getCurrentConnectState() == ConnectionManager.CONNECT_STATE_CONNECTED) {
             textLevel.setText(R.string.disconnect);
-            if (!sent) {
-                sendMessage();
+            if (!sent && isHost) {
+                network_Sudoku = Constants.BOARD_GAME[0][0];
+
+                sendMessage(convertToString(network_Sudoku, 9, 9));
                 sent = true;
             }
-            sudoku.resetGame(context, Constants.EASY_LEVEL_CELL_NUMBER, Constants.EASY_LEVEL_TEXT);
         } else if (mConnectionManager.getCurrentConnectState() == ConnectionManager.CONNECT_STATE_CONNECTING) {
             textLevel.setText(R.string.cancel);
         } else if (mConnectionManager.getCurrentConnectState() == ConnectionManager.CONNECT_STATE_IDLE) {
             textLevel.setText(R.string.connect);
         }
     }
+
+    public String convertToString(String[][] array, int row, int col) {
+        String str = "";
+        String tempStr = null;
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                tempStr = array[i][j];
+                str = str + tempStr + ",";
+            }
+        }
+        return str;
+    }
+
+    public String[][] convertToArray(String str, int row, int col) {
+        String[][] arrayConvert = new String[row][col];
+        int count = 0;
+        String[] strArray = str.split(",");
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                arrayConvert[i][j] = strArray[count];
+                ++count;
+            }
+        }
+        return arrayConvert;
+    }
+
 }

@@ -53,4 +53,19 @@
     <string name="fragment_cell_pencil_9">9</string>
     <string name="activity_board_game_pencil_text">草稿</string>
     <string name="activity_board_game_pen_text">答题</string>
+
+    <string name="enable_p2p_button">P2P On/Off</string>
+    <string name="discover_peers_button">Discover</string>
+    <string name="connect_peer_button">连接</string>
+    <string name="disconnect_peer_button">断开连接</string>
+    <string name="get_file_button">选择文件</string>
+    <string name="empty"></string>
+    <string name="yes">yes</string>
+    <string name="no">no</string>
+    <string name="client_text">点击选择文件选取要发送的文件(stored) file</string>
+    <string name="empty_message">没有找到设备，请点击右上角搜索设备</string>
+    <string name="p2p_off_warning">服务不可用，请打开wifi</string>
+    <string name="group_owner_text">"Am I the Group Owner? "</string>
+    <string name="label_me">我</string>
+    <string name="label_peers">扫描到的设备</string>
 </resources>

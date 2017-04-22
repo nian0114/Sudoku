@@ -24,4 +24,7 @@
 
     <!--colorAphla为RGBA(255,255,255,0),使用16进制数表示透明,后用@android:color/transparent替代-->
     <color name="colorAphla">#00000000</color>
+
+    <color name="status_bar_color">#FF000000</color>
+    <color name="layout_border_color">#FF111111</color>
 </resources>

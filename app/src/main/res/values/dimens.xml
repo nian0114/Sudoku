@@ -23,4 +23,7 @@
     <dimen name="corner_radius_cell">7dp</dimen>
     <dimen name="chronometer_margin">10dp</dimen>
     <dimen name="activity_splash_imagen_margin">50dp</dimen>
+
+    <dimen name="tablet_list_width">300dp</dimen>
+    <dimen name="phone_list_height">200dp</dimen>
 </resources>

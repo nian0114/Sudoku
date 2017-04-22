@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xbuyt.sudoku.R;
+import com.xbuyt.sudoku.fragments.KeyboardFragment;
 import com.xbuyt.sudoku.model.Sudoku;
 import com.xbuyt.sudoku.util.Constants;
 
@@ -31,7 +32,7 @@ public class GameActivity extends AppCompatActivity {
 
     private final int RESULT_CODE_BTDEVICE = 0;
 
-    private ConnectionManager mConnectionManager;
+    private static ConnectionManager mConnectionManager;
     private final static int MSG_SENT_DATA = 0;
     private final static int MSG_RECEIVE_DATA = 1;
 
@@ -207,10 +208,22 @@ public class GameActivity extends AppCompatActivity {
 
                         Log.d("TAG", chatMsg.messageContent);
 
-                        network_Sudoku = convertToArray(chatMsg.messageContent, 9, 9);
-
-                        if (!network_Sudoku[0][0].equals("")) {
-                            sudoku.resetGame(context, Constants.EASY_LEVEL_CELL_NUMBER, Constants.EASY_LEVEL_TEXT);
+                        if (chatMsg.messageContent.equals("win")) {
+                            GameActivity.chronometer.stop();
+                            GameActivity.penPencilButton.setText(R.string.activity_board_game_pen_text);
+                            GameActivity.penPencilButton.setEnabled(false);
+                            KeyboardFragment.resetKeyboard();
+                            KeyboardFragment.setEnabledKeyboard(false);
+                            Toast.makeText(context, "你输了", Toast.LENGTH_LONG).show();
+                        } else {
+                            try {
+                                network_Sudoku = convertToArray(chatMsg.messageContent, 9, 9);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            if (!network_Sudoku[0][0].equals("")) {
+                                sudoku.resetGame(context, Constants.EASY_LEVEL_CELL_NUMBER, Constants.EASY_LEVEL_TEXT);
+                            }
                         }
                     }
 
@@ -252,15 +265,12 @@ public class GameActivity extends AppCompatActivity {
 
     };
 
-    public void sendMessage(String content) {
+    public static void sendMessage(String content) {
         if (content != null) {
             content = content.trim();
             if (content.length() > 0) {
                 Log.d("TAG", content);
-                boolean ret = mConnectionManager.sendData(content.getBytes());
-                if (!ret) {
-                    Toast.makeText(GameActivity.this, R.string.send_fail, Toast.LENGTH_SHORT).show();
-                }
+                mConnectionManager.sendData(content.getBytes());
             }
         }
     }

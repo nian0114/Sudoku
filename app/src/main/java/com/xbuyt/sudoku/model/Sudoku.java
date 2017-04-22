@@ -72,6 +72,7 @@ public class Sudoku {
     //赢了后的操作
     public void winGame(Context context) {
         AlertDialog.winner(context);//弹窗恭喜
+        GameActivity.sendMessage("win");
         GameActivity.chronometer.stop();//计时暂停
         GameActivity.penPencilButton.setText(R.string.activity_board_game_pen_text);//恢复模式为答题模式
         GameActivity.penPencilButton.setEnabled(false);//禁止点击答题模式Button

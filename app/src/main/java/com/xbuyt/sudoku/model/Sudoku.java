@@ -1,7 +1,6 @@
 package com.xbuyt.sudoku.model;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.SystemClock;
 
 import com.xbuyt.sudoku.R;
@@ -12,12 +11,7 @@ import com.xbuyt.sudoku.fragments.LifeFragment;
 import com.xbuyt.sudoku.util.AlertDialog;
 import com.xbuyt.sudoku.util.Constants;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
 import java.util.Random;
 
 public class Sudoku {
@@ -70,44 +64,25 @@ public class Sudoku {
     }
 
     //赢了后的操作
-    public void winGame(Context context) {
-        AlertDialog.winner(context);//弹窗恭喜
+    public void finishGame() {
         GameActivity.chronometer.stop();//计时暂停
         GameActivity.penPencilButton.setText(R.string.activity_board_game_pen_text);//恢复模式为答题模式
         GameActivity.penPencilButton.setEnabled(false);//禁止点击答题模式Button
         KeyboardFragment.resetKeyboard();//把数字区域颜色统一为默认颜色
         KeyboardFragment.setEnabledKeyboard(false);//禁用数字区域的Button
+    }
 
-        if (Sudoku.mode == 2) {//仅开始游戏支持计时存档
-            SharedPreferences sp = context.getSharedPreferences("loginUser", 0);
-            DateFormat format = new SimpleDateFormat("mm:ss", Locale.US);
-
-            try {
-                Date date1 = format.parse(GameActivity.chronometer.getText().toString());
-                Date date2 = format.parse(sp.getString("chronometer", "00:00"));
-                if (date1.before(date2)) {
-                    SharedPreferences mSharedPreferences = context.getSharedPreferences("loginUser", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = mSharedPreferences.edit();
-                    editor.putString("chronometer", GameActivity.chronometer.getText().toString());
-                    editor.apply();
-                }
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        } else if (Sudoku.mode == 3) {
-            GameActivity.sendMessage("win," + GameActivity.chronometer.getText().toString());
-        }
+    //赢了后的操作
+    public void winGame(Context context) {
+        finishGame();
+        AlertDialog.winner(context);//弹窗恭喜
 
     }
 
     //无法继续的操作
     public void loseGame(Context context) {
+        finishGame();
         AlertDialog.gameOver(context);//弹窗再见
-        GameActivity.chronometer.stop();
-        GameActivity.penPencilButton.setText(R.string.activity_board_game_pen_text);
-        GameActivity.penPencilButton.setEnabled(false);
-        KeyboardFragment.resetKeyboard();
-        KeyboardFragment.setEnabledKeyboard(false);
     }
 
     public static String[][] getBoardGame() {

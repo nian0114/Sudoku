@@ -127,7 +127,17 @@ public class CellFragment extends Fragment {
         }
 
         if (BoardGameFragment.completedBoardGame(BoardGameFragment.getArrayCell())) {
-            sudoku.winGame(context);//如果全部被填满，且都是已绘区域就标记为赢得了比赛
+            switch (Sudoku.mode) {
+                default:
+                case 1:
+                case 2:
+                    sudoku.winGame(context);//如果全部被填满，且都是已绘区域就标记为赢得了比赛
+                    break;
+                case 3:
+                    sudoku.finishGame();
+                    GameActivity.sendMessage("p2_time," + GameActivity.chronometer.getText().toString());
+                    break;
+            }
         }
     }
 

@@ -22,7 +22,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xbuyt.sudoku.R;
-import com.xbuyt.sudoku.fragments.KeyboardFragment;
 import com.xbuyt.sudoku.model.Sudoku;
 import com.xbuyt.sudoku.util.Constants;
 
@@ -149,16 +148,11 @@ public class GameActivity extends AppCompatActivity {
                         Date date1 = format.parse(chronometer.getText().toString());
                         Date date2 = format.parse(player2_time);
                         if (date2.before(date1)) {
-                            Log.d("date1", chronometer.getText().toString());
-                            Log.d("date1", player2_time);
-
                             sent = false;
-                            GameActivity.chronometer.stop();
-                            GameActivity.penPencilButton.setText(R.string.activity_board_game_pen_text);
-                            GameActivity.penPencilButton.setEnabled(false);
-                            KeyboardFragment.resetKeyboard();
-                            KeyboardFragment.setEnabledKeyboard(false);
+                            sudoku.finishGame();
                             Toast.makeText(context, "你输了", Toast.LENGTH_LONG).show();
+                            sendMessage("youwin");
+                            player2_time = "";
                         }
                     } catch (ParseException e) {
                         e.printStackTrace();
@@ -225,12 +219,10 @@ public class GameActivity extends AppCompatActivity {
                         String messageContent;
                         messageContent = new String(data);
 
-                        if (!network_Sudoku[0][0].equals("")) {
-                            sudoku.resetGame(context, Constants.EASY_LEVEL_CELL_NUMBER, Constants.EASY_LEVEL_TEXT);
-                        }
-
-                        if (messageContent.equals("win")) {
+                        if (messageContent.contains("p2_time")) {
                             sent = false;
+                        } else if (!network_Sudoku[0][0].equals("")) {
+                            sudoku.resetGame(context, Constants.EASY_LEVEL_CELL_NUMBER, Constants.EASY_LEVEL_TEXT);
                         }
                     }
                 }
@@ -244,8 +236,11 @@ public class GameActivity extends AppCompatActivity {
                         String messageContent;
                         messageContent = new String(data);
 
-                        if (messageContent.contains("win")) {//只要包含win即可
+                        if (messageContent.contains("p2_time")) {//只要包含win即可
                             player2_time = messageContent.split(",")[1];
+                        } else if (messageContent.contains("youwin")) {
+                            Toast.makeText(context, "你赢了", Toast.LENGTH_LONG).show();
+                            player2_time = "";
                         } else {
                             try {
                                 network_Sudoku = convertToArray(messageContent, 9, 9);

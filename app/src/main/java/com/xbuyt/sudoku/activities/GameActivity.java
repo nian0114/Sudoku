@@ -48,6 +48,7 @@ public class GameActivity extends AppCompatActivity {
     public static String[][] network_Sudoku = new String[9][9];
     public static boolean sent = false;
     public static boolean isHost = false;
+    public static boolean isPlayed = false;
     private Context context;
     public static String player2_time = "";
 
@@ -350,6 +351,11 @@ public class GameActivity extends AppCompatActivity {
         } else if (mConnectionManager.getCurrentConnectState() == ConnectionManager.CONNECT_STATE_CONNECTING) {
             textLevel.setText(R.string.cancel);
         } else if (mConnectionManager.getCurrentConnectState() == ConnectionManager.CONNECT_STATE_IDLE) {
+            if (isPlayed) {
+                sudoku.finishGame();
+                Toast.makeText(context, "连接断开", Toast.LENGTH_LONG).show();
+                isPlayed = false;
+            }
             textLevel.setText(R.string.connect);
         }
     }

@@ -47,6 +47,8 @@ public class Sudoku {
             }
         } else if (mode == 1) {
             GameActivity.setTextLevel(level);
+        } else if (mode == 3) {
+            GameActivity.isPlayed = true;
         }
         currentLevel = numberOfCells;
         list.clear();

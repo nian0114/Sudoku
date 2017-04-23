@@ -333,7 +333,14 @@ public class GameActivity extends AppCompatActivity {
         if (mConnectionManager.getCurrentConnectState() == ConnectionManager.CONNECT_STATE_CONNECTED) {
             textLevel.setText(R.string.disconnect);
             if (!sent && isHost) {
-                network_Sudoku = Constants.BOARD_GAME[0][0];
+                Sudoku.bl = false;
+                Sudoku.generateJiugongGe(0);
+                int generateShuDu[][] = Sudoku.generateShuDu(Sudoku.end_jiuGongGe);
+                for (int i = 0; i < 9; i++) {
+                    for (int j = 0; j < 9; j++) {
+                        network_Sudoku[i][j] = String.valueOf(generateShuDu[i][j]);
+                    }
+                }
 
                 sendMessage(convertToString(network_Sudoku, 9, 9));
                 sent = true;

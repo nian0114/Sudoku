@@ -95,7 +95,7 @@ public class Sudoku {
                 e.printStackTrace();
             }
         } else if (Sudoku.mode == 3) {
-            GameActivity.sendMessage("win");
+            GameActivity.sendMessage("win," + GameActivity.chronometer.getText().toString());
         }
 
     }

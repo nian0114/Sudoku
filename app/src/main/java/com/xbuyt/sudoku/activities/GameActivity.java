@@ -26,6 +26,12 @@ import com.xbuyt.sudoku.fragments.KeyboardFragment;
 import com.xbuyt.sudoku.model.Sudoku;
 import com.xbuyt.sudoku.util.Constants;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class GameActivity extends AppCompatActivity {
 
     Sudoku sudoku = new Sudoku();
@@ -44,6 +50,7 @@ public class GameActivity extends AppCompatActivity {
     public static boolean sent = false;
     public static boolean isHost = false;
     private Context context;
+    public static String player2_time = "";
 
     private long lastStopTime;
 
@@ -131,6 +138,34 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         });
+
+        chronometer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+            @Override
+            public void onChronometerTick(Chronometer chronometer) {
+                if (!player2_time.equals("")) {
+                    DateFormat format = new SimpleDateFormat("mm:ss", Locale.US);
+
+                    try {
+                        Date date1 = format.parse(chronometer.getText().toString());
+                        Date date2 = format.parse(player2_time);
+                        if (date2.before(date1)) {
+                            Log.d("date1", chronometer.getText().toString());
+                            Log.d("date1", player2_time);
+
+                            sent = false;
+                            GameActivity.chronometer.stop();
+                            GameActivity.penPencilButton.setText(R.string.activity_board_game_pen_text);
+                            GameActivity.penPencilButton.setEnabled(false);
+                            KeyboardFragment.resetKeyboard();
+                            KeyboardFragment.setEnabledKeyboard(false);
+                            Toast.makeText(context, "你输了", Toast.LENGTH_LONG).show();
+                        }
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
     }
 
     @Override
@@ -209,14 +244,8 @@ public class GameActivity extends AppCompatActivity {
                         String messageContent;
                         messageContent = new String(data);
 
-                        if (messageContent.equals("win")) {
-                            sent = false;
-                            GameActivity.chronometer.stop();
-                            GameActivity.penPencilButton.setText(R.string.activity_board_game_pen_text);
-                            GameActivity.penPencilButton.setEnabled(false);
-                            KeyboardFragment.resetKeyboard();
-                            KeyboardFragment.setEnabledKeyboard(false);
-                            Toast.makeText(context, "你输了", Toast.LENGTH_LONG).show();
+                        if (messageContent.contains("win")) {//只要包含win即可
+                            player2_time = messageContent.split(",")[1];
                         } else {
                             try {
                                 network_Sudoku = convertToArray(messageContent, 9, 9);
@@ -345,5 +374,4 @@ public class GameActivity extends AppCompatActivity {
         }
         return arrayConvert;
     }
-
 }

@@ -2,6 +2,7 @@ package com.xbuyt.sudoku.model;
 
 import android.content.Context;
 import android.os.SystemClock;
+import android.view.View;
 
 import com.xbuyt.sudoku.R;
 import com.xbuyt.sudoku.activities.GameActivity;
@@ -54,6 +55,7 @@ public class Sudoku {
         BoardGameFragment.generateBoardGame(numberOfCells);
         LifeFragment.restartIcons(context);
         lifeCounter = 4;
+        GameActivity.chronometer.setVisibility(View.VISIBLE);
         GameActivity.chronometer.setBase(SystemClock.elapsedRealtime());
         GameActivity.chronometer.start();
         GameActivity.penPencilButton.setText(R.string.activity_board_game_pen_text);

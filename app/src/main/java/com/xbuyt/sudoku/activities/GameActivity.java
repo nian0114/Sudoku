@@ -68,6 +68,8 @@ public class GameActivity extends AppCompatActivity {
 
         context = getApplicationContext();
 
+        chronometer.setVisibility(View.INVISIBLE);
+
         if (Sudoku.mode == 3) {
             sent = false;
             isHost = false;

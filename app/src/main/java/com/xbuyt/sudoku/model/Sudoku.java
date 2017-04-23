@@ -117,7 +117,7 @@ public class Sudoku {
             case 2:
                 return shuDu_gen;
             case 3:
-                return Constants.BOARD_GAME[currentLevel][currentNumber];
+                return GameActivity.network_Sudoku;
             default:
                 return Constants.BOARD_GAME[currentLevel][currentNumber];
 
